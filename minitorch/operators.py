@@ -11,39 +11,92 @@ import math
 
 
 def mul(x, y):
-    ":math:`f(x, y) = x * y`"
-    # TODO: Implement for Task 0.1.
-    raise NotImplementedError('Need to implement for Task 0.1')
+    """
+    Multiplication of floats
 
+    Args:
+        x (float): A floating point number
+        y (float): A floating point number
+
+    Returns:
+        float: Value of x * y
+    """
+
+    return x * y
 
 def id(x):
-    ":math:`f(x) = x`"
-    # TODO: Implement for Task 0.1.
-    raise NotImplementedError('Need to implement for Task 0.1')
+    """
+    Identity function
+
+    Args:
+        x (float): A floating point number
+
+    Returns:
+        float: The input number x
+    """
+
+    return x
 
 
 def add(x, y):
-    ":math:`f(x, y) = x + y`"
-    # TODO: Implement for Task 0.1.
-    raise NotImplementedError('Need to implement for Task 0.1')
+    """
+    Addition of floats
+
+    Args:
+        x (float): A floating point number
+        y (float): A floating point number
+    
+    Returns:
+        float: The value of x + y
+    """
+    return x + y
 
 
 def neg(x):
-    ":math:`f(x) = -x`"
-    # TODO: Implement for Task 0.1.
-    raise NotImplementedError('Need to implement for Task 0.1')
+    """
+    Negation of floats
+
+    Args:
+        x (float): A floating point number
+    
+    Returns:
+        float: The negation of x
+    """
+    return -x
 
 
 def lt(x, y):
-    ":math:`f(x) =` 1.0 if x is less than y else 0.0"
-    # TODO: Implement for Task 0.1.
-    raise NotImplementedError('Need to implement for Task 0.1')
+    """
+    Less than comparison
+
+    Args:
+        x (float): A floating point number
+        y (float): A floating point number
+
+    Returns:
+        float: 1.0 if x lt y, else 0.0
+    """
+    if x > y:
+        return 0.0
+    elif x < y:
+        return 1.0
 
 
 def eq(x, y):
-    ":math:`f(x) =` 1.0 if x is equal to y else 0.0"
-    # TODO: Implement for Task 0.1.
-    raise NotImplementedError('Need to implement for Task 0.1')
+    """
+    Equality comparison
+
+    Args:
+        x (float): A floating point number
+        y (float): A floating point number
+    Returns:
+        float: 1.0 if x equals y, else 0.0
+    """
+    
+    if x == y:
+        return 1.0
+    else:
+        return 0.0
 
 
 def max(x, y):
