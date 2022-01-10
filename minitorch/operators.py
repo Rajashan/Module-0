@@ -12,7 +12,7 @@ import math
 
 def mul(x, y):
     """
-    Multiplication of floats
+    Multiplication of floats, f(x,y) = x * y
 
     Args:
         x (float): A floating point number
@@ -26,7 +26,7 @@ def mul(x, y):
 
 def id(x):
     """
-    Identity function
+    Identity function, f(x) = x
 
     Args:
         x (float): A floating point number
@@ -40,7 +40,7 @@ def id(x):
 
 def add(x, y):
     """
-    Addition of floats
+    Addition of floats, f(x, y) = x + y
 
     Args:
         x (float): A floating point number
@@ -54,7 +54,7 @@ def add(x, y):
 
 def neg(x):
     """
-    Negation of floats
+    Negation of floats, f(x) = -x
 
     Args:
         x (float): A floating point number
@@ -67,7 +67,7 @@ def neg(x):
 
 def lt(x, y):
     """
-    Less than comparison
+    Less than comparison, f(x,y) = x < y
 
     Args:
         x (float): A floating point number
@@ -84,7 +84,7 @@ def lt(x, y):
 
 def eq(x, y):
     """
-    Equality comparison
+    Equality comparison, f(x,y) = (x == y)
 
     Args:
         x (float): A floating point number
@@ -100,15 +100,37 @@ def eq(x, y):
 
 
 def max(x, y):
-    ":math:`f(x) =` x if x is greater than y else y"
-    # TODO: Implement for Task 0.1.
-    raise NotImplementedError('Need to implement for Task 0.1')
+    """
+    Returns the largest of two floats, f(x,y) = max(x,y)
+
+    Args:
+        x (float): A floating point number
+        y (float): A floating point number
+
+    Returns:
+        float: x or y with largest value
+    """
+    if x > y:
+        return x
+    else:
+        return y
 
 
 def is_close(x, y):
-    ":math:`f(x) = |x - y| < 1e-2` "
-    # TODO: Implement for Task 0.1.
-    raise NotImplementedError('Need to implement for Task 0.1')
+    """
+    Is close comparison for floats
+
+    Args:
+        x (float): A floating point number
+        y (float): A floating point number
+
+    Returns:
+        float: 1.0 if x is close to y, else 0.0
+    """
+    if abs(x - y) > 1e-2:
+        return 0.0
+    else:
+        return 1.0
 
 
 def sigmoid(x):
@@ -129,8 +151,10 @@ def sigmoid(x):
     Returns:
         float : sigmoid value
     """
-    # TODO: Implement for Task 0.1.
-    raise NotImplementedError('Need to implement for Task 0.1')
+    if x >= 0.0:
+        return 1.0 / (1.0 + exp(-x))
+    else:
+        return exp(x) / (1.0 + exp(x))
 
 
 def relu(x):
@@ -145,8 +169,10 @@ def relu(x):
     Returns:
         float : relu value
     """
-    # TODO: Implement for Task 0.1.
-    raise NotImplementedError('Need to implement for Task 0.1')
+    if x > 0.0:
+        return x
+    else:
+        return 0.0
 
 
 EPS = 1e-6
@@ -163,28 +189,59 @@ def exp(x):
 
 
 def log_back(x, d):
-    r"If :math:`f = log` as above, compute d :math:`d \times f'(x)`"
-    # TODO: Implement for Task 0.1.
-    raise NotImplementedError('Need to implement for Task 0.1')
+    """ d * f'(x) when f is log(x)
+
+    Args:
+        x (float): 
+        d (float):
+
+    Return:
+        float:
+
+
+    """
+    return d * (1.0 / log(x))
 
 
 def inv(x):
-    ":math:`f(x) = 1/x`"
-    # TODO: Implement for Task 0.1.
-    raise NotImplementedError('Need to implement for Task 0.1')
+    """Inverse function, f(x) = 1 / x
+
+    Args:
+        x (float): A floating point number
+
+    Returns:
+        float: The inverse of x
+    """
+    return 1.0 / x
 
 
 def inv_back(x, d):
-    r"If :math:`f(x) = 1/x` compute d :math:`d \times f'(x)`"
-    # TODO: Implement for Task 0.1.
-    raise NotImplementedError('Need to implement for Task 0.1')
+    """ d * f'(x) when f is 1 / x
+
+    Args:
+        x (float): 
+        d (float):
+    Return:
+        float:
+
+    """
+    return d * ( -1.0 /( log(x) ** 2))
 
 
 def relu_back(x, d):
-    r"If :math:`f = relu` compute d :math:`d \times f'(x)`"
-    # TODO: Implement for Task 0.1.
-    raise NotImplementedError('Need to implement for Task 0.1')
+    """ d * f'(x) when f is relu
 
+    Args:
+        x (float): 
+        d (float):
+    Return:
+        float:
+
+    """
+    if x > 0.0:
+        return d * 1.0
+    else:
+        return 0.0
 
 # ## Task 0.3
 
