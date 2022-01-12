@@ -23,6 +23,8 @@ from .strategies import small_floats, assert_close
 import pytest
 from minitorch import MathTest
 
+EPS = 2.220446049250313e-16
+
 
 # ## Task 0.1 Basic hypothesis tests.
 
@@ -106,10 +108,13 @@ def test_sigmoid(a):
     """
     assert sigmoid(a) <= 1.0
     assert sigmoid(a) >= 0.0
-    assert 1.0 - sigmoid(a) == - sigmoid(a)
-    assert sigmoid(0.5 + a) > 0.0
-    assert sigmoid(0.5 - a) < 0.0
-    assert sigmoid(a + 0.1) > sigmoid(a)
+
+    assert_close(sigmoid(a), 1 - sigmoid(-a))
+    if a > 0:
+        assert sigmoid(0.0 + a) > 0.5
+        assert sigmoid(a + 0.01) >= sigmoid(a)
+    elif a < 0:
+        assert sigmoid(0.0 + a) < 0.5
 
     
 
@@ -140,7 +145,8 @@ def test_distribute(a, b, c):
     Write a test that ensures that your operators distribute, i.e.
     :math:`z \times (x + y) = z \times x + z \times y`
     """
-    assert mul(a, b + c) == mul(a, b) + mul(a, c)
+    assert_close(mul(a, b + c), mul(a, b) + mul(a, c))
+
 
 
 @pytest.mark.task0_2
@@ -149,7 +155,8 @@ def test_other(a):
     """
     Write a test that ensures some other property holds for your functions.
     """
-    assert relu(-a) == 0
+    if a < 0:
+        assert_close(relu(a), 0)
     
 
 
